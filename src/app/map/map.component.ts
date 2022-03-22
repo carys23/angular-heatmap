@@ -20,19 +20,17 @@ export class MapComponent implements AfterViewInit {
     this.map = L.map('map', { crs: L.CRS.Simple });
     this.bounds = [[0,0],[1000,1000]];
     this.image = L.imageOverlay('assets/floor.jpg', this.bounds).addTo(this.map);
-  //   this.LightIcon = L.Icon.extend({
-  //     options: {
-  //     iconSize:[60, 55],
-  //     }
-  // });
-  //   this.LightIcon = new this.LightIcon ({iconUrl: 'assets/light.jpg'});
+    this.LightIcon = L.Icon.extend({
+      options: {
+      iconSize:[60, 55],
+      }
+  });
+    this.LightIcon = new this.LightIcon ({iconUrl: 'assets/light.jpg'});
     this.map.fitBounds(this.bounds);
     // this.heat = L.heatLayer([], {radius: this.defaultHmRadius, blur: this.defaultHmBlur, gradient:this.gradient }).addTo(this.map);
 
-this.marker = L.marker([800,800]).addTo(this.map);
+this.marker = L.marker([800,800], {icon: this.LightIcon}).addTo(this.map);
   }
-
-  
 
   constructor() { }
 
